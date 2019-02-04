@@ -44,9 +44,13 @@ var newGame = (event) => {
     height: height,
   };
   ipcRenderer.send('new-game', this.gridData)
+};
+
+var startGame = () => {
+  ipcRenderer.send('start-game');
 }
 
-ipcRenderer.on('randomArray', (event, randomArray) => {  
+ipcRenderer.on('generate-grid', (event, randomArray) => {  
   var className = '';
   var grid = $('#grid');
 
