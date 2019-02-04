@@ -19,7 +19,7 @@ const createWindow = () => {
 
 app.on('ready', createWindow);
 
-//methods
+//génération d'une nouvelle disposition de jeu aléatoire
 generateRandomStart = (gridData) => {
   this.gameArray= new Array(gridData.height);
 
@@ -34,6 +34,7 @@ generateRandomStart = (gridData) => {
     
 };
 
+//évolution du jeux
 updateArray = () => {
   var tempArray = this.gameArray
   for(var i = 0; i< this.gameArray.length; i++) {
@@ -46,6 +47,7 @@ updateArray = () => {
   return this.gameArray;
 };
 
+//on cherche les cellules voisines lignes par lignes et on fait communiquer la premiere et la deniere ligne pour avoir une grille torique
 findArroundCell = (array, i, j) => {
   var cells = topLine(array, i, j).concat(middleLine(array, i, j), bottomLine(array, i, j));
 
@@ -110,10 +112,12 @@ newCellState = (arroundCell) => {
 
 ipcMain.on('new-game',(event, gridData) => {
   var gameArray = generateRandomStart(gridData);
-  event.sender.send('generate-grid', gameArray);
+  this.generationNbr = 1
+  event.sender.send('generate-grid', gameArray,this.generationNbr);
 })
 
-ipcMain.on('start-game',(event) => {
-  var updatedArray = updateArray();
-  event.sender.send('generate-grid',updatedArray)
+ipcMain.on('generate-next',(event) => {
+  this.updatedArray = updateArray();
+  this.generationNbr ++;
+  event.sender.send('generate-grid',this.updatedArray, this.generationNbr)
 })

@@ -1,37 +1,7 @@
 const $ = require('jquery');
 const { ipcRenderer } = require('electron');
 
-// var app = {
-//   gridData: {
-//     width:80,
-//     height: 40,
-//     configuration:"1"
-//   },
-
-//   init: () => {
-  
-//     $('#configuration').on('click',ipcRenderer.send('new-game', $()));
-//   },
-
-//   setGridData: () => {
-//     console.log($('#grid-width').val());
-    
-
-//   },
-
-//   generateGrid: () => {
-//     app.grid = $('#grid');
-  
-//     for(var i = 0; i < app.gridData.height; i++){      
-//       for(var j = 0; j < app.gridData.width; j++){
-//         app.grid.append('<div class="cell dead-cell"></div>')
-//       }
-//     }
-//   }
-  
-
-// };
-
+var generationInterval;
 var newGame = (event) => {
   event.preventDefault();
   var width = ($('#grid-width').val() > 80) ? 80 : $('#grid-width').val();
@@ -47,10 +17,16 @@ var newGame = (event) => {
 };
 
 var startGame = () => {
-  ipcRenderer.send('start-game');
+  generationInterval = setInterval(generateNext,200);
 }
 
-ipcRenderer.on('generate-grid', (event, randomArray) => {  
+var pauseGame = () => {
+  clearInterval(generationInterval);
+}
+var generateNext = () => {
+  ipcRenderer.send('generate-next');
+}
+ipcRenderer.on('generate-grid', (event, randomArray,generationNbr) => {  
   var className = '';
   var grid = $('#grid');
 
@@ -70,6 +46,6 @@ ipcRenderer.on('generate-grid', (event, randomArray) => {
       grid.append($(document.createElement('div')).addClass(className));
     }
   }
-
+  $('#generation-number').text(generationNbr);
 })
   

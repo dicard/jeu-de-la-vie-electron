@@ -21,9 +21,11 @@
 
     <aside>
       <button id="start" onclick="startGame()">Lancer / Reprendre</button>
-      <button id="pause">Mettre en pause</button>
+      <button id="pause" onclick="pauseGame()">Mettre en pause</button>
       <button id="reset">Relancer le jeu</button>
     </aside>
+
+    <h2>Nombre de générations : <span id="generation-number">0</span></h2>
 
     <script src="./renderer.js"></script>
   </body>
