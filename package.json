@@ -1,0 +1,24 @@
+{
+  "name": "le-jeu-de-la-vie",
+  "version": "1.0.0",
+  "description": "Application du jeu de la vie en electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha .",
+    "start": "electron .",
+    "lint": "eslint ."
+  },
+  "author": "Dicard",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^4.0.4",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  },
+  "dependencies": {
+    "electron": "^4.0.4",
+    "mocha": "^5.2.0",
+    "vue": "^2.5.22"
+  }
+}
