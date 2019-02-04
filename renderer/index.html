@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Game of Life</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <h1>Grille du jeu de la vie</h1>
+    <div id="grid">
+    </div>
+
+    <form id="configuration">
+      <label for="grid-width">Choisissez le nombre de cases en largeur : </label>
+      <input type="number" id="grid-width" placeholder="(Max 80)">
+      <label for="grid-height">Choisissez le nombre de cases en hauteur : </label>
+      <input type="number" id="grid-height" placeholder="(Max 40)">
+      <input id="new-game" type="submit" value="Nouveau jeu" onclick="newGame(event)">
+    </form>
+
+    <aside>
+      <button id="start">Lancer / Reprendre</button>
+      <button id="pause">Mettre en pause</button>
+      <button id="reset">Relancer le jeu</button>
+    </aside>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>
