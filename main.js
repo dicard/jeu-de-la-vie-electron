@@ -31,7 +31,7 @@ app.on('ready', createWindow);
 
 //generation d'une map vierge
 generateVirginMap = (mapData) => {
-  template = new Array(mapData.height);
+  var template = new Array(mapData.height);
     for(var i = 0; i < mapData.height; i++) {
       template[i] = [];
       for(var j = 0; j < mapData.width; j++) {
