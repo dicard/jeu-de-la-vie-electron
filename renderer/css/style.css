@@ -8,20 +8,51 @@ h1 {
   font-size: 2em;
   margin: 1em;
 }
+h2 {
+  font-size: 1.5em;
+  margin: 1em;
+}
 
-#grid{
+
+#map{
   width: 1632px;
   display: flex;
   flex-wrap: wrap;
   margin: 2em auto;
 }
 
+#wrapper {
+  display: flex;
+  justify-content: space-around; 
+}
+
+#virgin-map-creation, #defined-map-creation{ 
+  display: block
+}
+
+#virgin-map-creation label, #virgin-map-creation input {
+  display: block;
+  margin: 0.5em auto;
+}
+
+#defined-map-creation label {
+  display: block;
+  margin: 0.5em auto;
+}
+
+#save-map, .game-info {
+  display: none;
+}
 
 .cell {
   border: 0.2px solid #000;
   display: inline-block;
   width:20px;
   height: 20px;
+}
+
+.row {
+  display: inherit;
 }
 
 .dead-cell{
@@ -31,3 +62,4 @@ h1 {
 .alive-cell{
   background-color: #000
 }
+
