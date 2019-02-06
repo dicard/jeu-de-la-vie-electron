@@ -10,6 +10,7 @@ var startMap = {}
 // eslint-disable-next-line
 var virginNewMap = (event) => {
   event.preventDefault();
+  $('#welcome-message').hide()
   $('#virgin-map-creation').hide();
   $('.game-info').show();
   $('#save-map').show();
@@ -29,6 +30,7 @@ var virginNewMap = (event) => {
 //eslint-disable-next-line
 var randomNewMap = (event) => {
   event.preventDefault();
+  $('#welcome-message').hide()
   $('#virgin-map-creation').hide();
   $('.game-info').show();
   $('#save-map').show();
@@ -78,6 +80,7 @@ var generateNext = () => {
 // eslint-disable-next-line
 var definedNewMap = (mapName) => {
   $('#virgin-map-creation').hide();
+  $('#welcome-message').hide()
   $('.game-info').show();
   ipcRenderer.send('map-generation', mapName);
 };

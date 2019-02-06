@@ -49,7 +49,7 @@ let saveNewMap = (map) => {
 
 // on ecoute  la création d'une nouvelle map vierge. et on renvoi une map selon les criteres définit par l'utilisateur et avec un template vierge
 ipcMain.on('new-map',(event, mapData) => {
-  mapData.template = GameOfLife.generateVirginMap(mapData.width, mapData.height);
+  mapData.template = GameOfLife.generateVirginTemplate(mapData.width, mapData.height);
   currentMap = mapData  ;
   currentMap.generationNbr = 0;
   event.sender.send('generate-map', currentMap);
@@ -89,7 +89,8 @@ ipcMain.on('reset-map',(event, startMap) => {
 
 //on refresh la fenetre pour revenir au debut
 ipcMain.on('refresh-browser',() => {
-  mainWindow.reload()
+  currentMap = {};
+  mainWindow.reload();
 });
 
 //on recupere la map a sauvegarder et on verifie le nom n'est pas deja pris. Si c'est le cas on renvoi un message d'erreur
