@@ -4,19 +4,21 @@
   "description": "Application du jeu de la vie en electron",
   "main": "main.js",
   "scripts": {
-    "test": "mocha tests/gameOfLifeSpec.js",
+    "test": "node_modules/.bin/mocha tests/gameOfLifeSpec.js",
     "start": "electron .",
     "lint": "node_modules/.bin/eslint ."
   },
   "author": "Dicard",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-arrays": "^2.0.0",
+    "chai-integer": "^0.1.0",
     "electron": "^4.0.4",
     "eslint": "^5.13.0",
     "mocha": "^5.2.0"
   },
   "dependencies": {
-    "chai": "^4.2.0",
     "electron": "^4.0.4",
     "jquery": "^3.3.1"
   }

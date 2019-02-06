@@ -15,13 +15,34 @@ var virginNewMap = (event) => {
   $('#save-map').show();
   $('#defined-map-creation').hide()
   $('#virgin-map').hide();
+  $('#random-map').hide();
   
   currentMap.name = $('#map-name').val();
   currentMap.width = ($('#map-width').val() > 80 || $('#map-width').val() == '')  ? 80 : $('#map-width').val();
   currentMap.height = ($('#map-height').val()> 40 || $('#map-height').val() == '') ? 40 : $('#map-height').val();
 
   ipcRenderer.send('new-map', currentMap)
-}
+};
+
+
+
+//eslint-disable-next-line
+var randomNewMap = (event) => {
+  event.preventDefault();
+  $('#virgin-map-creation').hide();
+  $('.game-info').show();
+  $('#save-map').show();
+  $('#defined-map-creation').hide()
+  $('#virgin-map').hide();
+  $('#random-map').hide();
+
+  currentMap.name = 'Aléatoire';
+  currentMap.width = ($('#map-width').val() > 80 || $('#map-width').val() == '')  ? 80 : $('#map-width').val();
+  currentMap.height = ($('#map-height').val()> 40 || $('#map-height').val() == '') ? 40 : $('#map-height').val();
+
+  ipcRenderer.send('random-map-generation', currentMap)
+};
+
 
  //on lance ou reprend le jeu a partir de la map en cours et on set une interval pour lancer la prochaine generation toute les 0.5 secondes
  // eslint-disable-next-line
@@ -38,6 +59,7 @@ var startGame = () => {
   
 };
 
+
 //on clear l'interval pour aretter la generation
 // eslint-disable-next-line
 var pauseGame = () => {
@@ -45,10 +67,12 @@ var pauseGame = () => {
   
 };
 
+
 //on demande au main de generer le prochain etat du template par rapport a la map actuelle
 var generateNext = () => { 
   ipcRenderer.send('generate-next', currentMap);
 };
+
 
 //on cache les info dont on ne veux plus et affiche celles que l'on souhaite et on demande au main de generer une map par rapport au nom de la map choisie
 // eslint-disable-next-line
@@ -57,6 +81,7 @@ var definedNewMap = (mapName) => {
   $('.game-info').show();
   ipcRenderer.send('map-generation', mapName);
 };
+
 
 //on change l'etat d'une cellule quand on clique dessus
 // eslint-disable-next-line
@@ -70,6 +95,7 @@ var changeCellState = (data) => {
   } 
 }
 
+
 //on demande au main de generer a nouveau la map de depart
 // eslint-disable-next-line
 var resetMap = () => {
@@ -82,11 +108,13 @@ var resetMap = () => {
   }
 }
 
+
 //on demande au main de revenir au debut
 // eslint-disable-next-line
 var returnToSpawn = () => {
   ipcRenderer.send('refresh-browser')
 }
+
 
 //on definis le template par rapport aux cellules en vie ou non
 var setMapTemplate = () => {
@@ -101,16 +129,18 @@ var setMapTemplate = () => {
   });
 }
 
+
 //on demande au main de sauvegarder la map actuelle dans le fichier JSON
 // eslint-disable-next-line
 var saveMap = (event) => {
   event.preventDefault();
   setMapTemplate();
-  
-  
   ipcRenderer.send('save-current-map', currentMap);
-  
 }
+
+
+
+
 //ipcRenderer Listenner
 
 //on genere la map en fonction des données recues

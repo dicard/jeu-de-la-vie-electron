@@ -34,15 +34,17 @@
             <label for="map-height">Choisissez le nombre de cases en hauteur : </label>
             <input type="number" id="map-height" placeholder="(Max / Base 40)">
             <input id="virgin-map" type="submit" value="Nouvelle grille vierge" onclick="virginNewMap(event)">
+            <input id="random-map" type="submit" value=" Nouvelle grille random" onclick="randomNewMap(event)">
           </form>
         </div>
         <button id="save-map" onclick="saveMap(event)"> Enregistrer vôtre grille</button>
+
+
 
         <div id="defined-map-creation">
           <label for="map-select">Choisissez un départ pré définis !</label>
           <select onchange ="definedNewMap(this.value)" name="map-select" id="map-select">
           <option value="">-- Choisissez ici --</option>
-          <option value="random">Map Aléatoire 80x40</option>
           </select>
         </div>
     </div>

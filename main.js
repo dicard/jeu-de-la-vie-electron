@@ -57,7 +57,7 @@ ipcMain.on('new-map',(event, mapData) => {
 
 // on ecoute le lancement ou la relance de l'evolution du jeu et on renvoi le nouvel etat du template
 ipcMain.on('generate-next',(event, currentMap) => {  
-  currentMap.template = GameOfLife.evolveTemplate(currentMap);
+  currentMap.template = GameOfLife.evolveTemplate(currentMap.template);
   currentMap.generationNbr ++;
   event.sender.send('generate-map',currentMap);
 });
@@ -65,13 +65,20 @@ ipcMain.on('generate-next',(event, currentMap) => {
 //on ecoute la map prédefinie choisie et on la renvoie avec son template.
 ipcMain.on('map-generation',(event, mapName) => {
   if(mapName === 'random') {
-    currentMap = GameOfLife.generateRandomMap()
+    currentMap = GameOfLife.generateRandomMapOfMaxSize()
   }
   else {
     currentMap = setMapByName(mapName);
   }
   event.sender.send('generate-map', currentMap);
 });
+
+ipcMain.on('random-map-generation',(event,mapData) => {
+  mapData.template = GameOfLife.generateRandomTemplate(mapData.width, mapData.height)
+  currentMap = mapData  ;
+  currentMap.generationNbr = 0;
+  event.sender.send('generate-map', currentMap);
+})
 
 //on recupere la map de depart et on la renvoi pour la mettre en place
 ipcMain.on('reset-map',(event, startMap) => {
