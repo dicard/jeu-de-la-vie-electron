@@ -7,10 +7,10 @@ let expect = chai.expect;
 chai.use(assertArrays);
 chai.use(assertInteger)
 
-describe('generateVirginMap', () => {
+describe('generateEmptyMap', () => {
 
   it('should return an  array', () => {
-    var template = GameOfLife.generateVirginTemplate()
+    var template = GameOfLife.generateEmptyTemplate()
 
     expect(template).to.be.array()
   });
@@ -19,7 +19,7 @@ describe('generateVirginMap', () => {
     var height = 8, 
         width = 14;
 
-    var template = GameOfLife.generateVirginTemplate(width, height);
+    var template = GameOfLife.generateEmptyTemplate(width, height);
 
     expect(template).to.be.ofSize(height);
     expect(template[0]).to.be.ofSize(width);
@@ -29,7 +29,7 @@ describe('generateVirginMap', () => {
     var height = 13,
         width = 18;
 
-    var template = GameOfLife.generateVirginTemplate(width, height);
+    var template = GameOfLife.generateEmptyTemplate(width, height);
 
     for(var i = 0; i < height; i++){
       for(var j = 0; j < width; j++){

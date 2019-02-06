@@ -26,11 +26,11 @@ h2 {
   justify-content: space-around; 
 }
 
-#virgin-map-creation, #defined-map-creation{ 
+#empty-map-creation, #defined-map-creation{ 
   display: block
 }
 
-#virgin-map-creation label, #virgin-map-creation input {
+#empty-map-creation label, #empty-map-creation input {
   display: block;
   margin: 0.5em auto;
 }

@@ -8,14 +8,14 @@ var startMap = {}
 
 //on cache les elements dont one ne veux plus, on affiche les nouveau elements que l'on souhaite, on paramettre le nom la width et la heght d'une nouvelle map puis on demande au main de generer un nouveau template vierge
 // eslint-disable-next-line
-var virginNewMap = (event) => {
+var emptyNewMap = (event) => {
   event.preventDefault();
   $('#welcome-message').hide()
-  $('#virgin-map-creation').hide();
+  $('#empty-map-creation').hide();
   $('.game-info').show();
   $('#save-map').show();
   $('#defined-map-creation').hide()
-  $('#virgin-map').hide();
+  $('#empty-map').hide();
   $('#random-map').hide();
   
   currentMap.name = $('#map-name').val();
@@ -31,11 +31,11 @@ var virginNewMap = (event) => {
 var randomNewMap = (event) => {
   event.preventDefault();
   $('#welcome-message').hide()
-  $('#virgin-map-creation').hide();
+  $('#empty-map-creation').hide();
   $('.game-info').show();
   $('#save-map').show();
   $('#defined-map-creation').hide()
-  $('#virgin-map').hide();
+  $('#empty-map').hide();
   $('#random-map').hide();
 
   currentMap.name = 'Aléatoire';
@@ -79,7 +79,7 @@ var generateNext = () => {
 //on cache les info dont on ne veux plus et affiche celles que l'on souhaite et on demande au main de generer une map par rapport au nom de la map choisie
 // eslint-disable-next-line
 var definedNewMap = (mapName) => {
-  $('#virgin-map-creation').hide();
+  $('#empty-map-creation').hide();
   $('#welcome-message').hide()
   $('.game-info').show();
   ipcRenderer.send('map-generation', mapName);

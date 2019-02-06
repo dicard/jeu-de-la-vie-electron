@@ -4,9 +4,9 @@
   "description": "Application du jeu de la vie en electron",
   "main": "main.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha tests/gameOfLifeSpec.js",
-    "start": "electron .",
-    "lint": "node_modules/.bin/eslint ."
+    "test": "./node_modules/.bin/mocha tests/gameOfLifeSpec.js",
+    "start": "./node_modules/.bin/electron .",
+    "lint": "./node_modules/.bin/eslint ."
   },
   "author": "Dicard",
   "license": "ISC",

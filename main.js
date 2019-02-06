@@ -49,7 +49,7 @@ let saveNewMap = (map) => {
 
 // on ecoute  la création d'une nouvelle map vierge. et on renvoi une map selon les criteres définit par l'utilisateur et avec un template vierge
 ipcMain.on('new-map',(event, mapData) => {
-  mapData.template = GameOfLife.generateVirginTemplate(mapData.width, mapData.height);
+  mapData.template = GameOfLife.generateEmptyTemplate(mapData.width, mapData.height);
   currentMap = mapData  ;
   currentMap.generationNbr = 0;
   event.sender.send('generate-map', currentMap);
