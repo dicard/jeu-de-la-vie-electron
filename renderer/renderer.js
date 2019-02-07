@@ -9,6 +9,7 @@ var startMap = {}
 //on cache les elements dont one ne veux plus, on affiche les nouveau elements que l'on souhaite, on paramettre le nom la width et la heght d'une nouvelle map puis on demande au main de generer un nouveau template vierge
 // eslint-disable-next-line
 var emptyNewMap = (event) => {
+
   event.preventDefault();
   $('#welcome-message').hide()
   $('#empty-map-creation').hide();
@@ -18,7 +19,8 @@ var emptyNewMap = (event) => {
   $('#empty-map').hide();
   $('#random-map').hide();
   
-  currentMap.name = $('#map-name').val();
+  
+  currentMap.name = $('#map-name').val() ? $('#map-name').val() : 'Map sans nom';
   currentMap.width = ($('#map-width').val() > 80 || $('#map-width').val() == '')  ? 80 : $('#map-width').val();
   currentMap.height = ($('#map-height').val()> 40 || $('#map-height').val() == '') ? 40 : $('#map-height').val();
 
@@ -55,7 +57,7 @@ var startGame = () => {
     startMap = currentMap;
   }
 
-  setMapTemplate();
+  currentMap.template = setMapTemplate();
   
   generationInterval = setInterval(generateNext,500);
   
@@ -121,15 +123,22 @@ var returnToSpawn = () => {
 
 //on definis le template par rapport aux cellules en vie ou non
 var setMapTemplate = () => {
+  var template = new Array(currentMap.height);
   $('.row').each((i, element)=> {
+    template[i] = [];
     $(element).children('.cell').each((j,childElement) => {
       var alive = $(childElement).hasClass('alive-cell');
       
       if(alive === true) {
-        currentMap.template[i][j] = 1;
+        template[i][j] = 1;
+      }
+      else {
+        template[i][j] = 0;
       }
     })    
-  });
+  })
+  
+  return template
 }
 
 
@@ -186,6 +195,7 @@ ipcRenderer.on('generate-map', (event, gameMap) => {
 //on recupere les map a mettre en option du select
 ipcRenderer.on('maps-options', (event,maps) => {
   var optionList = document.getElementById("map-select").options
+  
   maps.forEach(map => {    
     optionList.add(
       new Option(map.name, map.name)

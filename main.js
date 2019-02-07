@@ -20,7 +20,7 @@ const createWindow = () => {
     mainWindow = null;
   });
 
-  mainWindow.webContents.on('did-finish-load', () => {    
+  mainWindow.webContents.on('did-finish-load', () => {       
     mainWindow.webContents.send('maps-options', maps);
   });
 

@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>Jeu de la vie </h1>
-    <p id="welcome-message">Bienvenue dans le jeu de la vie, vous pouvez choisir une map prédéfinie via l'outils de selection sur vôtre droite ou creer une map vierge de la taille souhaitée sur vôtre gauche.<br> Vous pouvez a tout moment ajouter ou enlever des cellules du tableau simplement en cliquant dessus. Amusez vous bien !</p>
+    <p id="welcome-message">Bienvenue dans le jeu de la vie, vous pouvez choisir une map prédéfinie via l'outils de selection sur votre droite ou creer une map vierge de la taille souhaitée sur vôtre gauche.<br> Vous pouvez a tout moment ajouter ou enlever des cellules du tableau simplement en cliquant dessus. Amusez vous bien !</p>
     <h2 class="game-info">Nom de la map : <span id="current-map-name"></span> </h2>
     <h2 class="game-info">Taille de la map : <span id="current-map-size"></span></h2>
     <aside class="game-info">
@@ -33,8 +33,8 @@
             <input type="number" id="map-width" placeholder="(Max / Base 80)">
             <label for="map-height">Choisissez le nombre de cases en hauteur : </label>
             <input type="number" id="map-height" placeholder="(Max / Base 40)">
-            <input id="empty-map" type="submit" value="Nouvelle grille vierge" onclick="emptyNewMap(event)">
-            <input id="random-map" type="submit" value=" Nouvelle grille random" onclick="randomNewMap(event)">
+            <button id="empty-map" type="submit"  onclick="emptyNewMap(event)">Nouvelle grille vierge</button>
+            <button id="random-map" type="submit" onclick="randomNewMap(event)">Nouvelle grille aléatoire</button>
           </form>
         </div>
         <button id="save-map" onclick="saveMap(event)"> Enregistrer vôtre grille</button>
