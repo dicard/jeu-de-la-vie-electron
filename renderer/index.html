@@ -19,38 +19,34 @@
       <h2>Nombre de générations : <span id="generation-number">0</span></h2>
     </aside>
 
-      <div id="map">
-      </div>
-
-      <div id="wrapper">
-       
-        <div id=empty-map-creation>
-          <h2>Creation d'une nouvelle map : </h2>
-          <form id="configuration">
-            <label for="map-name">Choisissez le nom de vôtre map</label>
-            <input type="text" id="map-name">
-            <label for="map-width">Choisissez le nombre de cases en largeur : </label>
-            <input type="number" id="map-width" placeholder="(Max / Base 80)">
-            <label for="map-height">Choisissez le nombre de cases en hauteur : </label>
-            <input type="number" id="map-height" placeholder="(Max / Base 40)">
-            <button id="empty-map" type="submit"  onclick="emptyNewMap(event)">Nouvelle grille vierge</button>
-            <button id="random-map" type="submit" onclick="randomNewMap(event)">Nouvelle grille aléatoire</button>
-          </form>
-        </div>
-        <button id="save-map" onclick="saveMap(event)"> Enregistrer vôtre grille</button>
-
-
-
-        <div id="defined-map-creation">
-          <label for="map-select">Choisissez un départ pré définis !</label>
-          <select onchange ="definedNewMap(this.value)" name="map-select" id="map-select">
-          <option value="">-- Choisissez ici --</option>
-          </select>
-        </div>
+    <div id="map">
     </div>
-  
 
-   
+    <div id="wrapper">
+      
+      <div id=empty-map-creation>
+        <h2>Creation d'une nouvelle map : </h2>
+        <form id="configuration">
+          <label for="map-name">Choisissez le nom de vôtre map</label>
+          <input type="text" id="map-name">
+          <label for="map-width">Choisissez le nombre de cases en largeur : </label>
+          <input type="number" id="map-width" placeholder="(Max / Base 80)">
+          <label for="map-height">Choisissez le nombre de cases en hauteur : </label>
+          <input type="number" id="map-height" placeholder="(Max / Base 40)">
+          <button id="empty-map" type="submit"  onclick="emptyNewMap(event)">Nouvelle grille vierge</button>
+          <button id="random-map" type="submit" onclick="randomNewMap(event)">Nouvelle grille aléatoire</button>
+        </form>
+      </div>
+      
+      <button id="save-map" onclick="saveMap(event)"> Enregistrer vôtre grille</button>
+
+      <div id="defined-map-creation">
+        <label for="map-select">Choisissez un départ pré définis !</label>
+        <select onchange ="definedNewMap(this.value)" name="map-select" id="map-select">
+        <option value="">-- Choisissez ici --</option>
+        </select>
+      </div>
+  </div>
 
     <script src="./renderer.js"></script>
   </body>
